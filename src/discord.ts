@@ -14,7 +14,7 @@ function discord(message) {
     );
     const text_block = String(url_resp.slice(start_num, last_num))
       .replace(/,/g, "")
-      .replace(/ +|&nbsp;/g, "")
+      .replace(/^ +| +$|&nbsp;/g, "")
       .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
     const text_draft = text_block => {
       if (text_block.length > 80) {
