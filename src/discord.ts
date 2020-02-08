@@ -26,7 +26,9 @@ function discord(message) {
     const text_comp = text_draft(text_block);
 
     //OGP画像生成
-    const string = String(message[i][0]).replace(/ /g, "%20");
+    const string = String(message[i][0])
+      .replace(/ /g, "%20")
+      .replace(/　/g, "%E3%80%80");
     const ogp_url =
       "https://res.cloudinary.com/dy7i2k9d4/image/upload/l_text:Sawarabi%20Gothic_45:" +
       string +
