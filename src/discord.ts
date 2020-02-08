@@ -25,6 +25,13 @@ function discord(message) {
     };
     const text_comp = text_draft(text_block);
 
+    //OGP画像生成
+    const string = String(message[i][0]).replace(/ /g, "%20");
+    const ogp_url =
+      "https://res.cloudinary.com/dy7i2k9d4/image/upload/l_text:Sawarabi%20Gothic_45:" +
+      string +
+      ",w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png";
+
     //json本体
     const json = {
       attachments: [
@@ -37,8 +44,7 @@ function discord(message) {
           author_link: "https://www.kyoto-art.ac.jp/",
           author_icon:
             "https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/logo.jpg",
-          thumb_url:
-            "https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/logo_student_sq.png",
+          image_url: ogp_url,
           text: text_comp,
           mrkdwn_in: ["text"]
         }
