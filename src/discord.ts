@@ -33,6 +33,7 @@ function discord(message) {
       "https://res.cloudinary.com/dy7i2k9d4/image/upload/l_text:Sawarabi%20Gothic_45:" +
       string +
       ",w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png";
+    UrlFetchApp.fetch(ogp_url);
 
     //json本体
     const json = {
@@ -62,6 +63,6 @@ function discord(message) {
     };
 
     UrlFetchApp.fetch(url, options);
-    Utilities.sleep(5000);
+    Utilities.sleep(1000);
   }
 }
