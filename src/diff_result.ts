@@ -15,6 +15,9 @@ function diff_result(result) {
     data_tit[i] = data[i][0];
   }
 
+  const tit_dup = result_tit
+    .concat(data_tit)
+    .filter((x, i, self) => self.indexOf(x) === i && i !== self.lastIndexOf(x));
   const tit_diff = result_tit.filter(i => data_tit.indexOf(i) == -1);
 
   if (tit_diff.length > 0) {
