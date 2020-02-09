@@ -62,6 +62,6 @@ function discord(message) {
     };
 
     UrlFetchApp.fetch(url, options);
-    Utilities.sleep(1000);
+    Utilities.sleep(5000);
   }
 }
