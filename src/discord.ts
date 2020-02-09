@@ -33,7 +33,7 @@ function discord(message) {
       "https://res.cloudinary.com/dy7i2k9d4/image/upload/l_text:Sawarabi%20Gothic_45:" +
       string +
       ",w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png";
-    UrlFetchApp.fetch(ogp_url, { 'method': "get" })
+    UrlFetchApp.fetch(ogp_url, { method: "get" })
       .getBlob()
       .getBytes();
 
