@@ -1,4 +1,4 @@
-function upload_ogp(title) {
+function imgur(title) {
   const id =
     "Client-ID " +
     PropertiesService.getScriptProperties().getProperty("client_id");
