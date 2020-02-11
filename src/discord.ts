@@ -3,27 +3,7 @@ function discord(message) {
 
   for (let i = 0; i < message.length; i++) {
     //jsonに埋め込むテキスト部を作成
-    const url_resp = UrlFetchApp.fetch(message[i][1])
-      .getContentText()
-      .split(/\r\n|\r|\n/);
-    const start_num = url_resp.indexOf(
-      '                              <div class="post-main-block ve">'
-    );
-    const last_num = url_resp.indexOf(
-      '                              <div class="post-sub-block ve">'
-    );
-    const text_block = String(url_resp.slice(start_num, last_num))
-      .replace(/,/g, "")
-      .replace(/^ +| +$|&nbsp;/g, "")
-      .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
-    const text_draft = text_block => {
-      if (text_block.length > 80) {
-        return text_block.substr(0, 80) + "...";
-      } else {
-        return text_block;
-      }
-    };
-    const text_comp = text_draft(text_block);
+    const description = generate_description(message[i][1]);
 
     //OGP画像生成
     const ogp_url = imgur(encodeURIComponent(String(message[i][0])));
@@ -40,7 +20,7 @@ function discord(message) {
           author_link: "https://www.kyoto-art.ac.jp/student/",
           author_icon:
             "https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/logo.jpg",
-          text: text_comp,
+          text: description,
           mrkdwn_in: ["text"],
           image_url: ogp_url
         }
