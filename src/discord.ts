@@ -29,13 +29,7 @@ function discord(message) {
     const string = String(message[i][0])
       .replace(/ /g, "%20")
       .replace(/　/g, "%E3%80%80");
-    const ogp_url =
-      "https://res.cloudinary.com/dy7i2k9d4/image/upload/l_text:Sawarabi%20Gothic_45:" +
-      string +
-      ",w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png";
-    UrlFetchApp.fetch(ogp_url, { method: "get" })
-      .getBlob()
-      .getBytes();
+    const ogp_url = imgur(string);
 
     //json本体
     const json = {
