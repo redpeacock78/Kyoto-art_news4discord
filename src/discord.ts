@@ -35,12 +35,12 @@ function discord(message) {
     const json = {
       attachments: [
         {
-          fallback: "Required plain-text summary of the attachment.",
+          fallback: message[i][0],
           color: "#004194",
           title: message[i][0],
           title_link: message[i][1],
           author_name: "京都造形芸術大学 在学生専用サイト",
-          author_link: "https://www.kyoto-art.ac.jp/",
+          author_link: "https://www.kyoto-art.ac.jp/student/",
           author_icon:
             "https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/logo.jpg",
           image_url: ogp_url,
