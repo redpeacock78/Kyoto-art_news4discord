@@ -28,7 +28,8 @@ function discord(message) {
     //OGP画像生成
     const string = String(message[i][0])
       .replace(/ /g, "%20")
-      .replace(/　/g, "%E3%80%80");
+      .replace(/　/g, "%E3%80%80")
+      .replace(/\//g, "%2F");
     const ogp_url = imgur(string);
 
     //json本体
