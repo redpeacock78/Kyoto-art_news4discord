@@ -43,9 +43,9 @@ function discord(message) {
           author_link: "https://www.kyoto-art.ac.jp/student/",
           author_icon:
             "https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/logo.jpg",
-          image_url: ogp_url,
           text: text_comp,
-          mrkdwn_in: ["text"]
+          mrkdwn_in: ["text"],
+          image_url: ogp_url
         }
       ]
     };
