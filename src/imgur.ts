@@ -1,14 +1,18 @@
 function imgur(title) {
-  const id =
-    "Client-ID " +
-    PropertiesService.getScriptProperties().getProperty("client_id");
+  const client_id = PropertiesService.getScriptProperties().getProperty(
+    "client_id"
+  );
+  const cloud_name = PropertiesService.getScriptProperties().getProperty(
+    "cloud_name"
+  );
+  const id = "Client-ID " + client_id;
+  const imgur_url = "https://api.imgur.com/3/image";
   const ogp_url =
     "https://res.cloudinary.com/" +
-    PropertiesService.getScriptProperties().getProperty("cloud_name") +
+    cloud_name +
     "/image/upload/l_text:Sawarabi%20Gothic_45:" +
     title +
     ",w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png";
-  const imgur_url = "https://api.imgur.com/3/image";
 
   const resp = UrlFetchApp.fetch(ogp_url, { method: "get" });
   const resp_blob = resp.getBlob();
