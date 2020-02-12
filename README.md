@@ -12,6 +12,9 @@
 　また、[公式](https://www.kyoto-art.ac.jp/student/)で設定されているOGPのDescriptionは定型文、OGPのImageは404となって死んでいるのでこちらで動的に生成するようにしました。OGPのImageの生成と保管・配信にはそれぞれ[Cloudinary](https://cloudinary.com)と[Imgur](https://imgur.com/)を使用しています。
 ![Operation image diagrams](https://i.imgur.com/7LbvCIu.png)
 
+### 動作例
+![Operation example](https://i.imgur.com/ylafRbF.png)
+
 ### 使用技術
 - [GAS(Google Apps Script)](https://developers.google.com/apps-script/)
 - [Cloudinary](https://cloudinary.com)
