@@ -14,9 +14,11 @@ function imgur(title) {
     title +
     ",w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png";
 
+  //OGP画像を生成し取得
   const resp = UrlFetchApp.fetch(ogp_url, { method: "get" });
   const resp_blob = resp.getBlob();
 
+  //取得したOGP画像をヘッダー情報に格納
   const content: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
     method: "post",
     headers: {
@@ -25,6 +27,7 @@ function imgur(title) {
     payload: resp_blob
   };
 
+  //ヘッダー情報をImgur APIにPOSTし返ってきたJSONからImage Linkを取得し返却
   const imgur_resp = UrlFetchApp.fetch(imgur_url, content).getContentText();
   const imgur_json = JSON.parse(imgur_resp);
 
