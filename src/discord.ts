@@ -6,7 +6,13 @@ function discord(message) {
     const description = generate_description(message[i][1]);
 
     //OGP画像生成
-    const ogp_url = imgur(encodeURIComponent(String(message[i][0])));
+    const ogp_url = imgur(
+      encodeURIComponent(
+        String(message[i][0])
+          .replace(/\,/g, "%2C")
+          .replace(/\//g, "%2F")
+      )
+    );
 
     //author_iconを設定
     const icon_url = message[i][2]
