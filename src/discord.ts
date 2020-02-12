@@ -2,7 +2,7 @@ function discord(message) {
   const url = PropertiesService.getScriptProperties().getProperty("WEB_HOOK");
 
   for (let i = 0; i < message.length; i++) {
-    //jsonに埋め込むテキスト部を作成
+    //テキストを生成
     const description = generate_description(message[i][1]);
 
     //OGP画像生成
