@@ -9,10 +9,9 @@ function discord(message) {
     const ogp_url = imgur(encodeURIComponent(String(message[i][0])));
 
     //author_iconを設定
-    const icon_url = String(message[i][2])
-      .replace(/,/g, "")
-      .replace(/^ +| +$|&nbsp;/g, "")
-      .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
+    const icon_url = message[i][2]
+      .replace(/<img src="/, "")
+      .replace(/" referrerpolicy="no-referrer">/, "");
 
     //json本体
     const json = {
