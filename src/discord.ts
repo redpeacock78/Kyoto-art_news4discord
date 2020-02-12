@@ -8,6 +8,12 @@ function discord(message) {
     //OGP画像生成
     const ogp_url = imgur(encodeURIComponent(String(message[i][0])));
 
+    //author_iconを設定
+    const icon_url = String(message[i][2])
+      .replace(/,/g, "")
+      .replace(/^ +| +$|&nbsp;/g, "")
+      .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
+
     //json本体
     const json = {
       attachments: [
@@ -18,8 +24,7 @@ function discord(message) {
           title_link: message[i][1],
           author_name: "京都造形芸術大学 在学生専用サイト",
           author_link: "https://www.kyoto-art.ac.jp/student/",
-          author_icon:
-            "https://raw.githubusercontent.com/redpeacock78/kyoto-art_news/images/images/logo.jpg",
+          author_icon: icon_url,
           text: description,
           mrkdwn_in: ["text"],
           image_url: ogp_url
