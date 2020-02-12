@@ -27,14 +27,17 @@ function discord(message) {
       ]
     };
 
+    //json本体をJSON形式に変換
     const payload = JSON.stringify(json);
 
+    //変換したJSONをヘッダー情報に格納
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
       method: "post",
       contentType: "application/json",
       payload: payload
     };
 
+    //Discordのwebhookにヘッダー情報をPOSTした後1秒間sleep(連投対策)
     UrlFetchApp.fetch(url, options);
     Utilities.sleep(1000);
   }
