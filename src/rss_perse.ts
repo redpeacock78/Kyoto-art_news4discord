@@ -12,7 +12,8 @@ function rss_perse(URL) {
   for (let i = 0; i < length; i++) {
     const tit = items[i].getChildText("title");
     const link = items[i].getChildText("link");
-    result[i] = [tit, link];
+    const description = items[i].getChildText("description");
+    result[i] = [tit, link, description];
   }
 
   return result;
