@@ -8,9 +8,7 @@ function discord(message) {
     //OGP画像生成
     const ogp_url = imgur(
       encodeURIComponent(
-        String(message[i][0])
-          .replace(/\,/g, "%2C")
-          .replace(/\//g, "%2F")
+        message[i][0].replace(/\,/g, "%2C").replace(/\//g, "%2F")
       )
     );
 
