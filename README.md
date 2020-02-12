@@ -9,7 +9,8 @@
 ### 概要
 　これは[redpeacock78/kyoto-art_news](https://github.com/redpeacock78/kyoto-art_news)で公開している[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)のRSSの最新情報をDiscordに配信するものです。  
 　一応Discordとは言ってはいますがSlack互換のJsonで記述を行っているのでWebhookなどの設定を変更すればSlackに流すことも可能です。  
-　また、[公式](https://www.kyoto-art.ac.jp/student/)で設定されているOGPのDescriptionは定型文、OGPのImageは404となって死んでいるのでこちらで動的に生成するようにしました。OGPのImageの生成と保管にはそれぞれ[Cloudinary](https://cloudinary.com)と[Imgur](https://imgur.com/)を使用しています。
+　また、[公式](https://www.kyoto-art.ac.jp/student/)で設定されているOGPのDescriptionは定型文、OGPのImageは404となって死んでいるのでこちらで動的に生成するようにしました。OGPのImageの生成と保管・配信にはそれぞれ[Cloudinary](https://cloudinary.com)と[Imgur](https://imgur.com/)を使用しています。
+![Operation image diagrams](https://i.imgur.com/7LbvCIu.png)
 
 ### 使用技術
 - [GAS(Google Apps Script)](https://developers.google.com/apps-script/)
