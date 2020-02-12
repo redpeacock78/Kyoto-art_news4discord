@@ -11,7 +11,7 @@
 　一応Discordとは言ってはいますがSlack互換のJsonで記述を行っているのでWebhookなどの設定を変更すればSlackに流すことも可能です。  
 　また、[公式](https://www.kyoto-art.ac.jp/student/)で設定されているOGPのDescriptionは定型文、OGPのImageは404となって死んでいるのでこちらで動的に生成するようにしました。OGPのImageの生成と保管・配信にはそれぞれ[Cloudinary](https://cloudinary.com)と[Imgur](https://imgur.com/)を使用しています。  
 
-|<img src="https://i.imgur.com/7LbvCIu.png" alt="Operation image diagrams" title="Operation image diagrams" width="2500px">|<img src="https://i.imgur.com/ylafRbF.png" alt="Operation example" title="Operation example" width="2750px">|
+|<img src="https://i.imgur.com/7LbvCIu.png" alt="Operation image diagrams" title="Operation image diagrams">|<img src="https://i.imgur.com/ylafRbF.png" alt="Operation example" title="Operation example" width="1920px">|
 |:-:|:-:|
 |実際の各サービスの連携|表示されるメッセージ例|
   
