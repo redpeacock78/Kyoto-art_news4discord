@@ -9,12 +9,12 @@
 ### 概要
 　これは[redpeacock78/kyoto-art_news](https://github.com/redpeacock78/kyoto-art_news)で公開している[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)のRSSの最新情報をDiscordに配信するものです。  
 　一応Discordとは言ってはいますがSlack互換のJsonで記述を行っているのでWebhookなどの設定を変更すればSlackに流すことも可能です。  
-　また、[公式](https://www.kyoto-art.ac.jp/student/)で設定されているOGPのDescriptionは定型文、OGPのImageは404となって死んでいるのでこちらで動的に生成するようにしました。OGPのImageの生成と保管・配信にはそれぞれ[Cloudinary](https://cloudinary.com)と[Imgur](https://imgur.com/)を使用しています。
-![Operation image diagrams](https://i.imgur.com/7LbvCIu.png)
+　また、[公式](https://www.kyoto-art.ac.jp/student/)で設定されているOGPのDescriptionは定型文、OGPのImageは404となって死んでいるのでこちらで動的に生成するようにしました。OGPのImageの生成と保管・配信にはそれぞれ[Cloudinary](https://cloudinary.com)と[Imgur](https://imgur.com/)を使用しています。  
 
-### 動作例
-![Operation example](https://i.imgur.com/ylafRbF.png)
-
+|<img src="https://i.imgur.com/7LbvCIu.png" alt="Operation image diagrams" title="Operation image diagrams" width="2500px">|<img src="https://i.imgur.com/ylafRbF.png" alt="Operation example" title="Operation example" width="2750px">|
+|:-:|:-:|
+|実際の各サービスの連携|表示されるメッセージ例|
+  
 ### 使用技術
 - [GAS(Google Apps Script)](https://developers.google.com/apps-script/)
 - [Cloudinary](https://cloudinary.com)
