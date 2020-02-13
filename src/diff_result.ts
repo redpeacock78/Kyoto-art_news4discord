@@ -8,10 +8,10 @@ function diff_result(result) {
 
   const result_tit = [];
   const data_tit = [];
-  for (let i = 0; i < result.length; i++) {
+  for (let i = 0; i < result.length; i = (i + 1) | 0) {
     result_tit[i] = result[i][0];
   }
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < data.length; i = (i + 1) | 0) {
     data_tit[i] = data[i][0];
   }
 
@@ -19,7 +19,7 @@ function diff_result(result) {
 
   if (tit_diff.length > 0) {
     const diff = [];
-    for (let i = 0; i < tit_diff.length; i++) {
+    for (let i = 0; i < tit_diff.length; i = (i + 1) | 0) {
       const num = result_tit.indexOf(tit_diff[i]);
       diff[i] = result[num];
     }
