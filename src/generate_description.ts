@@ -14,9 +14,8 @@ function generate_description(URL) {
   const text_block = _.unescape(
     String(url_resp.slice(start_num, last_num))
       .replace(/,/g, "")
-      .replace(/^ +| +$/g, "")
       .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "")
-  );
+  ).replace(/^ +| +$/g, "");
   const comp_text = text_block => {
     if (text_block.length > 95) {
       return text_block.substr(0, 95) + "...";
