@@ -1,7 +1,7 @@
 function discord(message) {
   const url = PropertiesService.getScriptProperties().getProperty("WEB_HOOK");
 
-  for (let i = 0; i < message.length; i++) {
+  for (let i = 0; i < message.length; i = (i + 1) | 0) {
     //テキストを生成
     const description = generate_description(message[i][1]);
 
