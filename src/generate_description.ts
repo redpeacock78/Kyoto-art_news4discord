@@ -17,8 +17,8 @@ function generate_description(URL) {
       .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "")
   ).replace(/^ +| +$/g, "");
   const comp_text = text_block => {
-    if (text_block.length > 95) {
-      return text_block.substr(0, 95) + "...";
+    if (Array.from(text_block).length > 90) {
+      return String(Array.from(text_block).slice(0, 90)) + "...";
     } else {
       return text_block;
     }
