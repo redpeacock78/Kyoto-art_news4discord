@@ -2,9 +2,10 @@ function generate_description(URL) {
   //Underscore for GAS: M3i7wmUA_5n0NSEaa6NnNqOBao7QLBR4j
   const _ = Underscore.load();
 
-  //URL先のHTMLをFetch
+  //URL先のHTMLをFetchして&nbsp;などを通常のスペースに置換した上で改行を基準に配列化
   const url_resp = UrlFetchApp.fetch(URL)
     .getContentText()
+    .replace(/\s/g, " ")
     .split(/\r\n|\r|\n/);
   //抜粋開始行数と終了行数の取得
   const start_num = url_resp.indexOf(
