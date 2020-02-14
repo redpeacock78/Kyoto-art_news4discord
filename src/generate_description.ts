@@ -3,9 +3,11 @@ function generate_description(URL) {
   const _ = Underscore.load();
 
   //URL先のHTMLをFetchして&nbsp;などを通常のスペースに置換した上で改行を基準に配列化
+  const nbsp = String.fromCharCode(160);
   const url_resp = UrlFetchApp.fetch(URL)
     .getContentText()
-    .replace(/\s/g, " ")
+    .split(nbsp)
+    .join(" ")
     .split(/\r\n|\r|\n/);
   //抜粋開始行数と終了行数の取得
   const start_num = url_resp.indexOf(
