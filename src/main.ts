@@ -4,8 +4,5 @@ function main() {
   const diff: string[] = diff_result(result)
     .slice()
     .reverse();
-  const length: number = diff.length;
-  if (length > 0) {
-    discord(diff);
-  }
+  diff.length > 0 && discord(diff);
 }
