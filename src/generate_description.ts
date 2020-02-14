@@ -12,8 +12,9 @@ function generate_description(URL) {
     '                              <div class="post-sub-block ve">'
   );
   const text_block = _.unescape(
-    String(url_resp.slice(start_num, last_num))
-      .replace(/,/g, "")
+    url_resp
+      .slice(start_num, last_num)
+      .join("")
       .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "")
   ).replace(/^ +| +$/g, "");
   const comp_text = text_block => {
