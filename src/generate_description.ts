@@ -19,7 +19,9 @@ function generate_description(URL) {
   const comp_text = text_block => {
     if (Array.from(text_block).length > 90) {
       return (
-        String(Array.from(text_block).slice(0, 90)).replace(/,/g, "") + "..."
+        Array.from(text_block)
+          .slice(0, 90)
+          .join("") + "..."
       );
     } else {
       return text_block;
