@@ -1,5 +1,4 @@
 function generate_description(URL) {
-
   //URL先のHTMLをFetchして改行を基準に配列化
   const url_resp = UrlFetchApp.fetch(URL)
     .getContentText()
