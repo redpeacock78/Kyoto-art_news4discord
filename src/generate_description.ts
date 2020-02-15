@@ -21,12 +21,13 @@ function generate_description(URL) {
   )
     .getRootElement()
     .getText()
-    .replace(/^\s+|\s+$/g, "");
+    .replace(/^\s+|\s+$/g, "")
+    .replace(/\s+/g, " ");
   //文字コード・サロゲートペア・異体字セレクタ等を考慮した上での指定文字数での切り出し
   const comp_text = text_block => {
-    return Array.from(text_block).length > 90
+    return Array.from(text_block).length > 120
       ? Array.from(text_block)
-          .slice(0, 90)
+          .slice(0, 120)
           .join("") + "..."
       : text_block;
   };
