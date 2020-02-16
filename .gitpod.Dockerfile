@@ -11,5 +11,8 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/config-docker/
 
-RUN  cd "$(pwd)" && \
-     yarn add -D yarn.lock
+RUN pwd
+RUN sudo apt-get -y update && \
+    sudo apt-get -y upgrade && \
+    cd "$(pwd)" && \
+    yarn install
