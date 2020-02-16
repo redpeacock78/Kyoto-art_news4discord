@@ -10,7 +10,7 @@ function generate_description(URL) {
   const last_num = url_resp.indexOf(
     '                              <div class="post-sub-block ve">'
   );
-  //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去
+  //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去・連続スペースの統合
   const text_block = XmlService.parse(
     "<d>" +
       url_resp
