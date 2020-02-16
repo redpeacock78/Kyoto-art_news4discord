@@ -4,7 +4,8 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/redpeacock78/kyoto-art_news4discord)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/redpeacock78/kyoto-art_news4discord)  
 [![CircleCI](https://img.shields.io/circleci/build/github/redpeacock78/kyoto-art_news)](https://circleci.com/gh/redpeacock78/kyoto-art_news4discord)
-[![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
+[![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)  
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/redpeacock78/kyoto-art_news4discord)
 
 ### 概要
 　これは[redpeacock78/kyoto-art_news](https://github.com/redpeacock78/kyoto-art_news)で公開している[京都造形芸術大学 在学生専用サイト](https://www.kyoto-art.ac.jp/student/)のRSSの最新情報をDiscordに配信するものです。  
