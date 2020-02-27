@@ -5,14 +5,9 @@ function discord(message) {
     //テキストを生成
     const description = generate_description(message[i][1]);
 
-    //タイトル文のHTMLエンティティをデコード
-    const decode_tit = XmlService.parse("<d>" + message[i][0] + "</d>")
-      .getRootElement()
-      .getText();
-
     //OGP画像生成
     const ogp_url = imgur(
-      encodeURIComponent(decode_tit.replace(/\,/g, "%2C").replace(/\//g, "%2F"))
+      encodeURIComponent(message[i][0].replace(/\,/g, "%2C").replace(/\//g, "%2F"))
     );
 
     //author_iconを設定
@@ -26,7 +21,7 @@ function discord(message) {
         {
           fallback: message[i][0],
           color: "#004194",
-          title: decode_tit,
+          title: message[i][0],
           title_link: message[i][1],
           author_name: "京都造形芸術大学 在学生専用サイト",
           author_link: "https://www.kyoto-art.ac.jp/student/",
