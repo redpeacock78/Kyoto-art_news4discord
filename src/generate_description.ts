@@ -10,11 +10,20 @@ function generate_description(URL) {
   const last_num = url_resp.indexOf(
     '                              <div class="post-sub-block ve">'
   );
+  const start_num2 = url_resp.indexOf(
+    '                              <div class="post-sub-block ve">'
+  );
+  const last_num2 = url_resp.indexOf("      </main>");
   //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去・連続スペースの統合
   const text_block = XmlService.parse(
-    "<d>" +
+    '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">' +
+      "<d>" +
       url_resp
         .slice(start_num, last_num)
+        .join("")
+        .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "") +
+      url_resp
+        .slice(start_num2, last_num2)
         .join("")
         .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "") +
       "</d>"
