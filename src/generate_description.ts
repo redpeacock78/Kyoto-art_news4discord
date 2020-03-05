@@ -15,7 +15,7 @@ function generate_description(URL) {
   );
   const last_num2 = url_resp.indexOf("      </main>");
   //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去・連続スペースの統合
-  const text_block = XmlService.parse(
+  const texts_block = XmlService.parse(
     '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">' +
       "<d>" +
       url_resp
@@ -32,14 +32,10 @@ function generate_description(URL) {
     .getText()
     .replace(/^\s+|\s+$/g, "")
     .replace(/\s+/g, " ");
-  //文字コード・サロゲートペア・異体字セレクタ等を考慮した上での指定文字数での切り出し
-  const comp_text = text_block => {
-    return Array.from(text_block).length > 120
-      ? Array.from(text_block)
-          .slice(0, 120)
-          .join("") + "..."
-      : text_block;
-  };
 
-  return comp_text(text_block);
+  //文字コード・サロゲートペア・異体字セレクタ等を考慮した上での指定文字数での切り出し
+  const chara_count = Array.from(texts_block);
+  return chara_count.length > 120
+    ? chara_count.slice(0, 120).join("") + "..."
+    : texts_block;
 }
