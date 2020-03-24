@@ -29,7 +29,6 @@ function discord(message) {
           author_link: "https://www.kyoto-art.ac.jp/student/",
           author_icon: icon_url,
           text: description,
-          mrkdwn_in: ["text"],
           image_url: ogp_url
         }
       ]
