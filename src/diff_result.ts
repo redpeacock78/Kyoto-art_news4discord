@@ -15,7 +15,8 @@ function diff_result(result) {
     data_tit[i] = data[i][0];
   }
 
-  const tit_diff = result_tit.filter(i => data_tit.indexOf(i) == -1);
+  const tit_diff = Array.from(new Set(result_tit.concat(data_tit)));
+  //const tit_diff = result_tit.filter(i => data_tit.indexOf(i) == -1);
 
   if (tit_diff.length > 0) {
     const diff = [];
