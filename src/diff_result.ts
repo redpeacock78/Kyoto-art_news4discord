@@ -1,10 +1,10 @@
-function diff_result(result) {
-  const cache = CacheService.getScriptCache().get("result");
+function diff_result<T>(result: T[]): T[] {
+  const cache: string = CacheService.getScriptCache().get("result");
   if (cache == null) {
     CacheService.getScriptCache().put("result", JSON.stringify(result), 21600);
   }
 
-  const data = JSON.parse(CacheService.getScriptCache().get("result"));
+  const data: T[] = JSON.parse(CacheService.getScriptCache().get("result"));
 
   const result_tit = [];
   const data_tit = [];
@@ -15,7 +15,7 @@ function diff_result(result) {
     data_tit[i] = data[i][0];
   }
 
-  const tit_diff = result_tit.filter(i => data_tit.indexOf(i) == -1);
+  const tit_diff: T[] = result_tit.filter(i => data_tit.indexOf(i) == -1);
 
   if (tit_diff.length > 0) {
     const diff = [];
@@ -24,7 +24,7 @@ function diff_result(result) {
       diff[i] = result[num];
     }
 
-    const outcome = diff.concat(data);
+    const outcome: T[] = diff.concat(data);
 
     if (outcome.length < 200) {
       CacheService.getScriptCache().remove("result");
