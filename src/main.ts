@@ -3,11 +3,11 @@ Copyright (c) 2020 redpeacock78
 This software is released under the MIT License, see LICENSE.
 */
 
-function main() {
+function main(): void {
   const url = "https://kyotoartnews.page.link/all";
-  const result: string[] = rss_perse(url);
-  const diff: string[] = diff_result(result)
+  const result = rss_perse<string>(url);
+  const diff = diff_result<string>(result)
     .slice()
     .reverse();
-  diff.length > 0 && discord(diff);
+  diff.length > 0 && discord<string>(diff);
 }
