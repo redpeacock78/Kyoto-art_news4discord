@@ -6,8 +6,8 @@ function diff_result<T>(result: T[]): T[] {
 
   const data: T[] = JSON.parse(CacheService.getScriptCache().get("result"));
 
-  const result_tit = [];
-  const data_tit = [];
+  const result_tit: T[] = [];
+  const data_tit: T[] = [];
   for (let i = 0; i < result.length; i = (i + 1) | 0) {
     result_tit[i] = result[i][0];
   }
@@ -18,9 +18,9 @@ function diff_result<T>(result: T[]): T[] {
   const tit_diff: T[] = result_tit.filter(i => data_tit.indexOf(i) == -1);
 
   if (tit_diff.length > 0) {
-    const diff = [];
+    const diff: T[] = [];
     for (let i = 0; i < tit_diff.length; i = (i + 1) | 0) {
-      const num = result_tit.indexOf(tit_diff[i]);
+      const num: number = result_tit.indexOf(tit_diff[i]);
       diff[i] = result[num];
     }
 
