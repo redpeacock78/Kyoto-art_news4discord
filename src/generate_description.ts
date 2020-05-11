@@ -1,4 +1,4 @@
-function generate_description<T extends string>(URL: T): string {
+function generate_description<T extends string>(URL: T): T | string {
   //URL先のHTMLをFetchして改行を基準に配列化
   const url_resp: string[] = UrlFetchApp.fetch(URL)
     .getContentText()
