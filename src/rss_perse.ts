@@ -1,4 +1,4 @@
-function rss_perse<T extends string>(URL: T): T[] {
+function rss_perse<T extends string>(URL: T): T[][] | string[][] {
   const resp: GoogleAppsScript.XML_Service.Document = XmlService.parse(
     UrlFetchApp.fetch(URL).getContentText()
   );
@@ -10,7 +10,7 @@ function rss_perse<T extends string>(URL: T): T[] {
   const items: GoogleAppsScript.XML_Service.Element[] = xml;
   const length: number = items.length;
 
-  const result = [];
+  const result: string[][] = [];
   for (let i = 0; i < length; i = (i + 1) | 0) {
     const tit: string = items[i].getChildText("title");
     const link: string = items[i].getChildText("link");
