@@ -26,7 +26,7 @@ jobs:
           <<: *node_modules_cache_params
       - run:
           name: Setup to GAS clasp environment.
-          command: yarn install --frozen-lockfile
+          command: yarn upgrade
       - save_cache:
           name: Saving Cache.
           <<: *node_modules_cache_params
