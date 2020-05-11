@@ -35,7 +35,7 @@ function imgur<T>(title: T): T {
     imgur_url,
     content
   ).getContentText();
-  const imgur_json = JSON.parse(imgur_resp);
+  const imgur_json: any = JSON.parse(imgur_resp);
 
   return imgur_json.data.link;
 }
