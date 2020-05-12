@@ -5,14 +5,9 @@ function imgur<T extends string>(title: T): T {
   const cloud_name: string = PropertiesService.getScriptProperties().getProperty(
     "cloud_name"
   );
-  const id: string = "Client-ID " + client_id;
+  const id = `Client-ID ${client_id}`;
   const imgur_url = "https://api.imgur.com/3/image";
-  const ogp_url: string =
-    "https://res.cloudinary.com/" +
-    cloud_name +
-    "/image/upload/l_text:Sawarabi%20Gothic_45:" +
-    title +
-    ",w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png";
+  const ogp_url = `https://res.cloudinary.com/${cloud_name}/image/upload/l_text:Sawarabi%20Gothic_45:${title},w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png`;
 
   //OGP画像を生成し取得
   const resp: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(
