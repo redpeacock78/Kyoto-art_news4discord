@@ -1,4 +1,4 @@
-function generate_description<T extends string>(URL: T): T | string {
+function generate_description<T extends string>(URL: T): T {
   //URL先のHTMLをFetchして改行を基準に配列化
   const url_resp: string[] = UrlFetchApp.fetch(URL)
     .getContentText()
@@ -41,6 +41,6 @@ function generate_description<T extends string>(URL: T): T | string {
   //文字コード・サロゲートペア・異体字セレクタ等を考慮した上での指定文字数での切り出し
   const chara_count: string[] = Array.from(texts_block);
   return chara_count.length > 120
-    ? chara_count.slice(0, 120).join("") + "..."
-    : texts_block;
+    ? (`${chara_count.slice(0, 120).join("")}...` as T)
+    : (texts_block as T);
 }
