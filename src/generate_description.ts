@@ -3,6 +3,7 @@ function generate_description<T extends string>(URL: T): T | string {
   const url_resp: string[] = UrlFetchApp.fetch(URL)
     .getContentText()
     .split(/\r\n|\r|\n/);
+
   //抜粋開始行数と終了行数の取得
   const start_num: number = url_resp.indexOf(
     '                              <div class="post-main-block ve">'
@@ -14,19 +15,23 @@ function generate_description<T extends string>(URL: T): T | string {
     '                              <div class="post-sub-block ve">'
   );
   const last_num2: number = url_resp.indexOf("      </main>");
+
   //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去・連続スペースの統合
+  const html_tag = new RegExp(/<("[^"]*"|'[^']*'|[^'">])*>/g);
+  const ext: string = url_resp
+    .slice(start_num, last_num)
+    .join("")
+    .replace(html_tag, "");
+  const ext2: string = url_resp
+    .slice(start_num2, last_num2)
+    .join("")
+    .replace(html_tag, "");
   const texts_block: string = XmlService.parse(
-    '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">' +
-      "<d>" +
-      url_resp
-        .slice(start_num, last_num)
-        .join("")
-        .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "") +
-      url_resp
-        .slice(start_num2, last_num2)
-        .join("")
-        .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "") +
-      "</d>"
+    `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+      <d>
+       ${ext}
+       ${ext2}
+      </d>`
   )
     .getRootElement()
     .getText()
