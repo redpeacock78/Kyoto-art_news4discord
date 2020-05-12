@@ -1,4 +1,4 @@
-function imgur<T>(title: T): T {
+function imgur<T extends string>(title: T): T {
   const client_id: string = PropertiesService.getScriptProperties().getProperty(
     "client_id"
   );
@@ -35,7 +35,42 @@ function imgur<T>(title: T): T {
     imgur_url,
     content
   ).getContentText();
-  const imgur_json: any = JSON.parse(imgur_resp);
 
-  return imgur_json.data.link;
+  interface ImgurType {
+    data: Data;
+    success: boolean;
+    status: number;
+  }
+
+  interface Data {
+    id: string;
+    title: null;
+    description: null;
+    datetime: number;
+    type: string;
+    animated: boolean;
+    width: number;
+    height: number;
+    size: number;
+    views: number;
+    bandwidth: number;
+    vote: null;
+    favorite: boolean;
+    nsfw: null;
+    section: null;
+    account_url: null;
+    account_id: number;
+    is_ad: boolean;
+    in_most_viral: boolean;
+    tags: any[];
+    ad_type: number;
+    ad_url: string;
+    in_gallery: boolean;
+    deletehash: string;
+    name: string;
+    link: string;
+  }
+
+  const imgur_json = JSON.parse(imgur_resp) as ImgurType;
+  return imgur_json.data.link as T;
 }
