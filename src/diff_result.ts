@@ -1,10 +1,21 @@
 function diff_result<T>(result: T[]): T[] {
-  const cache: string = CacheService.getScriptCache().get("result");
-  if (cache == null) {
-    CacheService.getScriptCache().put("result", JSON.stringify(result), 21600);
+  //Cache Service関連
+  const get_cache = (name: string): string => {
+    return CacheService.getScriptCache().get(name);
+  };
+  const put_cache = (name: string, data: string, time: number): void => {
+    CacheService.getScriptCache().put(name, data, time);
+  };
+  const rm_cache = (name: string): void => {
+    CacheService.getScriptCache().remove(name);
+  };
+
+  //resultの有無
+  if (get_cache("result") == null) {
+    put_cache("result", JSON.stringify(result), 21600);
   }
 
-  const data: T[] = JSON.parse(CacheService.getScriptCache().get("result"));
+  const data: T[] = JSON.parse(get_cache("result"));
 
   const result_tit: T[] = [];
   const data_tit: T[] = [];
@@ -27,25 +38,17 @@ function diff_result<T>(result: T[]): T[] {
     const outcome: T[] = diff.concat(data);
 
     if (outcome.length < 200) {
-      CacheService.getScriptCache().remove("result");
-      CacheService.getScriptCache().put(
-        "result",
-        JSON.stringify(outcome),
-        21600
-      );
+      rm_cache("result");
+      put_cache("result", JSON.stringify(outcome), 21600);
       return diff;
     } else {
-      CacheService.getScriptCache().remove("result");
-      CacheService.getScriptCache().put(
-        "result",
-        JSON.stringify(outcome.slice(0, 200)),
-        21600
-      );
+      rm_cache("result");
+      put_cache("result", JSON.stringify(outcome.slice(0, 200)), 21600);
       return diff;
     }
   } else {
-    CacheService.getScriptCache().remove("result");
-    CacheService.getScriptCache().put("result", JSON.stringify(result), 21600);
+    rm_cache("result");
+    put_cache("result", JSON.stringify(result), 21600);
     return tit_diff;
   }
 }
