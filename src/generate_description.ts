@@ -19,12 +19,12 @@ function generate_description<T extends string>(URL: T): T {
   //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去・連続スペースの統合
   const html_tag = new RegExp(/<("[^"]*"|'[^']*'|[^'">])*>/g);
   const html_excerpt_tag_removal = (
-    S: number,
-    E: number,
+    start: number,
+    end: number,
     tag: RegExp
   ): string => {
     return url_resp
-      .slice(S, E)
+      .slice(start, end)
       .join("")
       .replace(tag, "");
   };
