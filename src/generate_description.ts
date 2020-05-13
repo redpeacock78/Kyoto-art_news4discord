@@ -5,27 +5,31 @@ function generate_description<T extends string>(URL: T): T {
     .split(/\r\n|\r|\n/);
 
   //抜粋開始行数と終了行数の取得
-  const line_number = (search_word: string): number => {
+  const get_line_number = (search_word: string): number => {
     return url_resp.indexOf(search_word);
   };
-  const start_num: number = line_number(
+  const start: number = get_line_number(
     '                              <div class="post-main-block ve">'
   );
-  const middle_num: number = line_number(
+  const middle: number = get_line_number(
     '                              <div class="post-sub-block ve">'
   );
-  const last_num: number = line_number("      </main>");
+  const last: number = get_line_number("      </main>");
 
   //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去・連続スペースの統合
   const html_tag = new RegExp(/<("[^"]*"|'[^']*'|[^'">])*>/g);
-  const html_exerpt = (S: number, E: number, tag: RegExp): string => {
+  const html_excerpt_tag_removal = (
+    S: number,
+    E: number,
+    tag: RegExp
+  ): string => {
     return url_resp
       .slice(S, E)
       .join("")
       .replace(tag, "");
   };
-  const main_text: string = html_exerpt(start_num, middle_num, html_tag);
-  const sub_text: string = html_exerpt(middle_num, last_num, html_tag);
+  const main_text: string = html_excerpt_tag_removal(start, middle, html_tag);
+  const sub_text: string = html_excerpt_tag_removal(middle, last, html_tag);
   const texts_block: string = XmlService.parse(
     `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
       <d>
