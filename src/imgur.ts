@@ -1,10 +1,12 @@
 function imgur<T extends string>(title: T): T {
-  const client_id: string = PropertiesService.getScriptProperties().getProperty(
-    "client_id"
-  );
-  const cloud_name: string = PropertiesService.getScriptProperties().getProperty(
-    "cloud_name"
-  );
+  //スクリプトのプロパティの値(client_id, cloud_name)を取得
+  const get_value = (property: string): string => {
+    return PropertiesService.getScriptProperties().getProperty(property);
+  };
+  const client_id: string = get_value("client_id");
+  const cloud_name: string = get_value("cloud_name");
+
+  //title, client_id, cloud_nameそれぞれを代入
   const id = `Client-ID ${client_id}`;
   const imgur_url = "https://api.imgur.com/3/image";
   const ogp_url = `https://res.cloudinary.com/${cloud_name}/image/upload/l_text:Sawarabi%20Gothic_45:${title},w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png`;
