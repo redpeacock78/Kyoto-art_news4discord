@@ -28,13 +28,11 @@ function generate_description<T extends string>(URL: T): T {
       .join("")
       .replace(tag, "");
   };
-  const main_text: string = html_excerpt_tag_removal(start, middle, html_tag);
-  const sub_text: string = html_excerpt_tag_removal(middle, last, html_tag);
   const texts_block: string = XmlService.parse(
     `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
       <d>
-       ${main_text}
-       ${sub_text}
+       ${html_excerpt_tag_removal(start, middle, html_tag)}
+       ${html_excerpt_tag_removal(middle, last, html_tag)}
       </d>`
   )
     .getRootElement()
