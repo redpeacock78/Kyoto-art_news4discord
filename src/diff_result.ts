@@ -1,4 +1,4 @@
-function diff_result<T>(result: T[]): T[] {
+function diff_result<T>({ result }: { result: T[] }): T[] {
   //Cache Service関連の操作
   const get_cache = ({ name }: { name: string }): string => {
     return CacheService.getScriptCache().get(name);
