@@ -1,12 +1,15 @@
-function generate_description<T extends string>(URL: T): T {
+async function generate_description<T extends string>(URL: T): Promise<T> {
   //URL先のHTMLをFetchして改行を基準に配列化
-  const url_resp: string[] = UrlFetchApp.fetch(URL)
-    .getContentText()
-    .split(/\r\n|\r|\n/);
+  const url_resp = async (url: string): Promise<string[]> => {
+    return UrlFetchApp.fetch(url)
+      .getContentText()
+      .split(/\r\n|\r|\n/);
+  };
 
   //抜粋開始行数と終了行数の取得
+  const resp_array: string[] = await url_resp(URL);
   const get_line_number = (search_word: string): number => {
-    return url_resp.indexOf(search_word);
+    return resp_array.indexOf(search_word);
   };
   const start: number = get_line_number(
     '                              <div class="post-main-block ve">'
@@ -23,7 +26,7 @@ function generate_description<T extends string>(URL: T): T {
     end: number,
     tag: RegExp
   ): string => {
-    return url_resp
+    return resp_array
       .slice(start, end)
       .join("")
       .replace(tag, "");
