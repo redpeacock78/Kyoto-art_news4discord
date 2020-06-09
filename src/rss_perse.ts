@@ -1,4 +1,4 @@
-function rss_perse<T extends string>(URL: T): T[][] {
+function rss_perse<T extends string>({ URL }: { URL: T }): T[][] {
   const resp: GoogleAppsScript.XML_Service.Document = XmlService.parse(
     UrlFetchApp.fetch(URL).getContentText()
   );
