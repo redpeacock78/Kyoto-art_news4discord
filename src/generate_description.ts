@@ -4,10 +4,14 @@ async function generate_description<T extends string>({
   URL: T;
 }): Promise<T> {
   //URL先のHTMLをFetchして改行を基準に配列化
-  const url_resp = async ({ url }: { url: string }): Promise<string[]> => {
-    return UrlFetchApp.fetch(url)
-      .getContentText()
-      .split(/\r\n|\r|\n/);
+  const url_resp = ({ url }: { url: string }): Promise<string[]> => {
+    return new Promise((resolve: (value?: string[]) => void) => {
+      resolve(
+        UrlFetchApp.fetch(url)
+          .getContentText()
+          .split(/\r\n|\r|\n/)
+      );
+    });
   };
 
   //抜粋開始行数と終了行数の取得
