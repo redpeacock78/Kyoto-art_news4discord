@@ -5,7 +5,9 @@ async function discord<T>(message: T[]): Promise<void> {
 
   for (let i = 0; i < message.length; i = (i + 1) | 0) {
     //テキストを生成
-    const description: string = generate_description<string>(message[i][1]);
+    const description: string = await generate_description<string>(
+      message[i][1]
+    );
 
     //OGP画像生成
     const ogp_url: string = await imgur<string>(
