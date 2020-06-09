@@ -68,6 +68,6 @@ async function imgur<T extends string>(title: T): Promise<T> {
     link: string;
   }
 
-  const imgur_json = await JSON.parse(imgur_resp) as ImgurType;
+  const imgur_json = (await JSON.parse(imgur_resp)) as ImgurType;
   return imgur_json.data.link as T;
 }
