@@ -12,11 +12,16 @@ async function imgur<T extends string>(title: T): Promise<T> {
   const ogp_url = `https://res.cloudinary.com/${cloud_name}/image/upload/l_text:Sawarabi%20Gothic_45:${title},w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png`;
 
   //OGP画像を生成し取得
-  const resp: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(
-    ogp_url,
-    { method: "get" }
-  );
-  const resp_blob: GoogleAppsScript.Base.Blob = resp.getBlob();
+  const resp = async (
+    url: string
+  ): Promise<GoogleAppsScript.URL_Fetch.HTTPResponse> => {
+    const req: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(
+      url,
+      { method: "get" }
+    );
+    return req;
+  };
+  const resp_blob: GoogleAppsScript.Base.Blob = (await resp(ogp_url)).getBlob();
 
   //取得したOGP画像をヘッダー情報に格納
   const content: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
@@ -28,10 +33,16 @@ async function imgur<T extends string>(title: T): Promise<T> {
   };
 
   //ヘッダー情報をImgur APIにPOSTし返ってきたJSONからImage Linkを取得し返却
-  const imgur_resp: string = UrlFetchApp.fetch(
-    imgur_url,
-    content
-  ).getContentText();
+  const imgur_resp = async ({
+    url,
+    header
+  }: {
+    url: string;
+    header: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
+  }): Promise<string> => {
+    const json: string = UrlFetchApp.fetch(url, header).getContentText();
+    return json;
+  };
 
   interface ImgurType {
     data: Data;
@@ -68,6 +79,8 @@ async function imgur<T extends string>(title: T): Promise<T> {
     link: string;
   }
 
-  const imgur_json = (await JSON.parse(imgur_resp)) as ImgurType;
+  const imgur_json = (await JSON.parse(
+    await imgur_resp({ url: imgur_url, header: content })
+  )) as ImgurType;
   return imgur_json.data.link as T;
 }
