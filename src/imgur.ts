@@ -12,12 +12,16 @@ async function imgur<T extends string>({ title }: { title: T }): Promise<T> {
   const ogp_url = `https://res.cloudinary.com/${cloud_name}/image/upload/l_text:Sawarabi%20Gothic_45:${title},w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png`;
 
   //OGP画像を生成し取得
-  const resp = async ({
+  const resp = ({
     url
   }: {
     url: string;
   }): Promise<GoogleAppsScript.URL_Fetch.HTTPResponse> => {
-    return UrlFetchApp.fetch(url, { method: "get" });
+    return new Promise(
+      (resolve: (value?: GoogleAppsScript.URL_Fetch.HTTPResponse) => void) => {
+        resolve(UrlFetchApp.fetch(url, { method: "get" }));
+      }
+    );
   };
   const resp_blob: GoogleAppsScript.Base.Blob = (
     await resp({ url: ogp_url })
@@ -33,14 +37,16 @@ async function imgur<T extends string>({ title }: { title: T }): Promise<T> {
   };
 
   //ヘッダー情報をImgur APIにPOSTし返ってきたJSONからImage Linkを取得し返却
-  const imgur_resp = async ({
+  const imgur_resp = ({
     url,
     header
   }: {
     url: string;
     header: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
   }): Promise<string> => {
-    return UrlFetchApp.fetch(url, header).getContentText();
+    return new Promise((resolve: (value?: string) => void) => {
+      resolve(UrlFetchApp.fetch(url, header).getContentText());
+    });
   };
 
   interface ImgurType {
