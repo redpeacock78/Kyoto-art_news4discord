@@ -1,20 +1,20 @@
-async function discord<T>(message: T[]): Promise<void> {
+async function discord<T>({ message }: { message: T[] }): Promise<void> {
   const url: string = PropertiesService.getScriptProperties().getProperty(
     "WEB_HOOK"
   );
 
   for (let i = 0; i < message.length; i = (i + 1) | 0) {
     //テキストを生成
-    const description: string = await generate_description<string>(
-      message[i][1]
-    );
+    const description: string = await generate_description<string>({
+      URL: message[i][1]
+    });
 
     //OGP画像生成
-    const ogp_url: string = await imgur<string>(
-      encodeURIComponent(
+    const ogp_url: string = await imgur<string>({
+      title: encodeURIComponent(
         message[i][0].replace(/\,/g, "%2C").replace(/\//g, "%2F")
       )
-    );
+    });
 
     //author_iconを設定
     const icon_url: string = message[i][2]
