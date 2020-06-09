@@ -15,11 +15,7 @@ async function imgur<T extends string>(title: T): Promise<T> {
   const resp = async (
     url: string
   ): Promise<GoogleAppsScript.URL_Fetch.HTTPResponse> => {
-    const req: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(
-      url,
-      { method: "get" }
-    );
-    return req;
+    return UrlFetchApp.fetch(url, { method: "get" });
   };
   const resp_blob: GoogleAppsScript.Base.Blob = (await resp(ogp_url)).getBlob();
 
@@ -40,8 +36,7 @@ async function imgur<T extends string>(title: T): Promise<T> {
     url: string;
     header: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
   }): Promise<string> => {
-    const json: string = UrlFetchApp.fetch(url, header).getContentText();
-    return json;
+    return UrlFetchApp.fetch(url, header).getContentText();
   };
 
   interface ImgurType {
