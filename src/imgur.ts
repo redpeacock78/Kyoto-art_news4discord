@@ -1,10 +1,10 @@
 async function imgur<T extends string>(title: T): Promise<T> {
   //スクリプトのプロパティの値(client_id, cloud_name)を取得
-  const get_value = (property: string): string => {
+  const get_value = ({ property }: { property: string }): string => {
     return PropertiesService.getScriptProperties().getProperty(property);
   };
-  const client_id: string = get_value("client_id");
-  const cloud_name: string = get_value("cloud_name");
+  const client_id: string = get_value({ property: "client_id" });
+  const cloud_name: string = get_value({ property: "cloud_name" });
 
   //title, client_id, cloud_nameそれぞれを代入
   const id = `Client-ID ${client_id}`;
@@ -12,12 +12,16 @@ async function imgur<T extends string>(title: T): Promise<T> {
   const ogp_url = `https://res.cloudinary.com/${cloud_name}/image/upload/l_text:Sawarabi%20Gothic_45:${title},w_800,c_fit/v1581149440/OGP/IMG_0172_qjc2qa.png`;
 
   //OGP画像を生成し取得
-  const resp = async (
-    url: string
-  ): Promise<GoogleAppsScript.URL_Fetch.HTTPResponse> => {
+  const resp = async ({
+    url
+  }: {
+    url: string;
+  }): Promise<GoogleAppsScript.URL_Fetch.HTTPResponse> => {
     return UrlFetchApp.fetch(url, { method: "get" });
   };
-  const resp_blob: GoogleAppsScript.Base.Blob = (await resp(ogp_url)).getBlob();
+  const resp_blob: GoogleAppsScript.Base.Blob = (
+    await resp({ url: ogp_url })
+  ).getBlob();
 
   //取得したOGP画像をヘッダー情報に格納
   const content: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
