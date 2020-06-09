@@ -1,4 +1,4 @@
-function discord<T>(message: T[]): void {
+async function discord<T>(message: T[]): Promise<void> {
   const url: string = PropertiesService.getScriptProperties().getProperty(
     "WEB_HOOK"
   );
@@ -8,7 +8,7 @@ function discord<T>(message: T[]): void {
     const description: string = generate_description<string>(message[i][1]);
 
     //OGP画像生成
-    const ogp_url: string = imgur<string>(
+    const ogp_url: string = await imgur<string>(
       encodeURIComponent(
         message[i][0].replace(/\,/g, "%2C").replace(/\//g, "%2F")
       )
