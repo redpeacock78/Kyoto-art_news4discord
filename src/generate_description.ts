@@ -1,4 +1,8 @@
-async function generate_description<T extends string>(URL: T): Promise<T> {
+async function generate_description<T extends string>({
+  URL
+}: {
+  URL: T;
+}): Promise<T> {
   //URL先のHTMLをFetchして改行を基準に配列化
   const url_resp = async ({ url }: { url: string }): Promise<string[]> => {
     return UrlFetchApp.fetch(url)
