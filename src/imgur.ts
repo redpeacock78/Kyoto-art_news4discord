@@ -1,4 +1,4 @@
-function imgur<T extends string>(title: T): T {
+async function imgur<T extends string>(title: T): Promise<T> {
   //スクリプトのプロパティの値(client_id, cloud_name)を取得
   const get_value = (property: string): string => {
     return PropertiesService.getScriptProperties().getProperty(property);
@@ -68,6 +68,6 @@ function imgur<T extends string>(title: T): T {
     link: string;
   }
 
-  const imgur_json = JSON.parse(imgur_resp) as ImgurType;
+  const imgur_json = await JSON.parse(imgur_resp) as ImgurType;
   return imgur_json.data.link as T;
 }
