@@ -13,9 +13,9 @@ async function generate_description<T extends string>({
       );
     });
   };
+  const resp_array: string[] = await url_resp({ url: URL });
 
   //抜粋開始行数と終了行数の取得
-  const resp_array: string[] = await url_resp({ url: URL });
   const get_line_number = ({
     search_word
   }: {
