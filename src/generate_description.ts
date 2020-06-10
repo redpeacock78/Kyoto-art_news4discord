@@ -30,7 +30,7 @@ async function generate_description<T extends string>({
   const middle: number = get_line_number({
     search_word: '                              <div class="post-sub-block ve">'
   });
-  const last: number = get_line_number({ search_word: "      </main>" });
+  const last: number | void = get_line_number({ search_word: "      </main>" });
 
   //HTMLの抜粋とHTMLタグの除去及びHTMLエンティティのアンエスケープ処理、冒頭・文末の連続スペースの除去・連続スペースの統合
   const html_tag = new RegExp(/<("[^"]*"|'[^']*'|[^'">])*>/g);
@@ -42,7 +42,7 @@ async function generate_description<T extends string>({
     start: number;
     end: number;
     tag: RegExp;
-  }): string => {
+  }): string | void => {
     return resp_array
       .slice(start, end)
       .join("")
