@@ -1,10 +1,45 @@
 async function imgur<T extends string>({ title }: { title: T }): Promise<T> {
+  //Imgur APIから返却されるjsonの型定義
+  interface ImgurType {
+    data: Data;
+    success: boolean;
+    status: number;
+  }
+  interface Data {
+    id: string;
+    title: null;
+    description: null;
+    datetime: number;
+    type: string;
+    animated: boolean;
+    width: number;
+    height: number;
+    size: number;
+    views: number;
+    bandwidth: number;
+    vote: null;
+    favorite: boolean;
+    nsfw: null;
+    section: null;
+    account_url: null;
+    account_id: number;
+    is_ad: boolean;
+    in_most_viral: boolean;
+    tags: any[];
+    ad_type: number;
+    ad_url: string;
+    in_gallery: boolean;
+    deletehash: string;
+    name: string;
+    link: string;
+  }
+
   //スクリプトのプロパティの値(client_id, cloud_name)を取得
-  const get_value = ({ property }: { property: string }): string => {
-    return PropertiesService.getScriptProperties().getProperty(property);
+  const get_property = ({ key }: { key: string }): string => {
+    return PropertiesService.getScriptProperties().getProperty(key);
   };
-  const client_id: string = get_value({ property: "client_id" });
-  const cloud_name: string = get_value({ property: "cloud_name" });
+  const client_id: string = get_property({ key: "client_id" });
+  const cloud_name: string = get_property({ key: "cloud_name" });
 
   //title, client_id, cloud_nameそれぞれを代入
   const id = `Client-ID ${client_id}`;
@@ -48,42 +83,6 @@ async function imgur<T extends string>({ title }: { title: T }): Promise<T> {
       resolve(UrlFetchApp.fetch(url, header).getContentText());
     });
   };
-
-  interface ImgurType {
-    data: Data;
-    success: boolean;
-    status: number;
-  }
-
-  interface Data {
-    id: string;
-    title: null;
-    description: null;
-    datetime: number;
-    type: string;
-    animated: boolean;
-    width: number;
-    height: number;
-    size: number;
-    views: number;
-    bandwidth: number;
-    vote: null;
-    favorite: boolean;
-    nsfw: null;
-    section: null;
-    account_url: null;
-    account_id: number;
-    is_ad: boolean;
-    in_most_viral: boolean;
-    tags: any[];
-    ad_type: number;
-    ad_url: string;
-    in_gallery: boolean;
-    deletehash: string;
-    name: string;
-    link: string;
-  }
-
   const imgur_json = (await JSON.parse(
     await imgur_resp({ url: imgur_url, header: content })
   )) as ImgurType;
