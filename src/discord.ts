@@ -1,4 +1,14 @@
 async function discord<T>({ message }: { message: T[] }): Promise<void> {
+  //指定した時間(ミリ秒)待つ処理
+  const sleep = ({ msec }: { msec: number }): Promise<void> => {
+    return new Promise((resolve: (value?: void) => void) => {
+      setTimeout(() => {
+        resolve;
+      }, msec);
+    });
+  };
+
+  //プロパティからDiscord botのwebhook Urlを取得
   const url: string = PropertiesService.getScriptProperties().getProperty(
     "WEB_HOOK"
   );
@@ -50,6 +60,6 @@ async function discord<T>({ message }: { message: T[] }): Promise<void> {
 
     //Discordのwebhookにヘッダー情報をPOSTした後1秒間sleep(連投対策)
     UrlFetchApp.fetch(url, options);
-    Utilities.sleep(1000);
+    await sleep({ msec: 1000 });
   }
 }
