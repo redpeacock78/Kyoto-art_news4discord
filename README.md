@@ -15,7 +15,10 @@
 |<img src="https://i.imgur.com/7LbvCIu.png" alt="Operation image diagrams" title="Operation image diagrams"  width="1426px">|<img src="https://i.imgur.com/ylafRbF.png" alt="Operation example" title="Operation example">|
 |:-:|:-:|
 |実際の各サービスの連携|表示されるメッセージ例|
-  
+
+### リアルタイムの稼働状況
+<iframe src="https://e.widgetbot.io/channels/584808006802472988/675438983555317770" height="500" width="524" frameborder="0" allowfullscreen></iframe>
+
 ### 使用技術
 - [GAS(Google Apps Script)](https://developers.google.com/apps-script/)
 - [V8 Runtime Overview | Apps Script | Google Developers](https://developers.google.com/apps-script/guides/v8-runtime?hl=ja)
