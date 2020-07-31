@@ -17,7 +17,9 @@
 |実際の各サービスの連携|表示されるメッセージ例|
 
 ### リアルタイムの稼働状況
+{::nomarkdown}
 <iframe src="https://e.widgetbot.io/channels/584808006802472988/675438983555317770" height="500" width="524" frameborder="0" allowfullscreen></iframe>
+{:/nomarkdown}
 
 ### 使用技術
 - [GAS(Google Apps Script)](https://developers.google.com/apps-script/)
