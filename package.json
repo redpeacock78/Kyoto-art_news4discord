@@ -44,6 +44,7 @@
   "name": "kyoto-art_news4discord",
   "version": "0.0.1",
   "main": "index.js",
+  "repository": "https://github.com/redpeacock78/kyoto-art_news4discord.git",
   "author": "redpeacock78",
   "license": "MIT"
 }
