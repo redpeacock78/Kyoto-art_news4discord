@@ -6,7 +6,7 @@ function diff_result<T>({ result }: { result: T[] }): T[] {
   const put_cache = ({
     name,
     data,
-    time
+    time,
   }: {
     name: string;
     data: string;
@@ -34,7 +34,7 @@ function diff_result<T>({ result }: { result: T[] }): T[] {
     data_tit[i] = data[i][0];
   }
 
-  const tit_diff: T[] = result_tit.filter(i => data_tit.indexOf(i) == -1);
+  const tit_diff: T[] = result_tit.filter((i) => data_tit.indexOf(i) == -1);
 
   if (tit_diff.length > 0) {
     const diff: T[] = [];
@@ -54,7 +54,7 @@ function diff_result<T>({ result }: { result: T[] }): T[] {
       put_cache({
         name: "result",
         data: JSON.stringify(outcome.slice(0, 200)),
-        time: 21600
+        time: 21600,
       });
       return diff;
     }
