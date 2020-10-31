@@ -48,7 +48,7 @@ async function imgur<T extends string>({ title }: { title: T }): Promise<T> {
 
   //OGP画像を生成し取得
   const resp = ({
-    url
+    url,
   }: {
     url: string;
   }): Promise<GoogleAppsScript.URL_Fetch.HTTPResponse> => {
@@ -66,15 +66,15 @@ async function imgur<T extends string>({ title }: { title: T }): Promise<T> {
   const content: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
     method: "post",
     headers: {
-      Authorization: id
+      Authorization: id,
     },
-    payload: resp_blob
+    payload: resp_blob,
   };
 
   //ヘッダー情報をImgur APIにPOSTし返ってきたJSONからImage Linkを取得し返却
   const imgur_resp = ({
     url,
-    header
+    header,
   }: {
     url: string;
     header: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
