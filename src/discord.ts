@@ -16,14 +16,14 @@ async function discord<T>({ message }: { message: T[] }): Promise<void> {
   for (let i = 0; i < message.length; i = (i + 1) | 0) {
     //テキストを生成
     const description: string = await generate_description<string>({
-      URL: message[i][1]
+      URL: message[i][1],
     });
 
     //OGP画像生成
     const ogp_url: string = await imgur<string>({
       title: encodeURIComponent(
         message[i][0].replace(/\,/g, "%2C").replace(/\//g, "%2F")
-      )
+      ),
     });
 
     //author_iconを設定
@@ -43,9 +43,9 @@ async function discord<T>({ message }: { message: T[] }): Promise<void> {
           author_link: "https://www.kyoto-art.ac.jp/student/",
           author_icon: icon_url,
           text: description,
-          image_url: ogp_url
-        }
-      ]
+          image_url: ogp_url,
+        },
+      ],
     };
 
     //json本体をJSON形式に変換
@@ -55,7 +55,7 @@ async function discord<T>({ message }: { message: T[] }): Promise<void> {
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
       method: "post",
       contentType: "application/json",
-      payload: payload
+      payload: payload,
     };
 
     //Discordのwebhookにヘッダー情報をPOSTした後1秒間sleep(連投対策)
