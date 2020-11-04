@@ -34,7 +34,7 @@ async function generate_description<T extends string>({
   const last: number | void = get_line_number({ search_word: "      </main>" });
 
   const login_start = get_line_number({
-    search_word: '         <div class="login-box-wrap">',
+    search_word: '          <div class="login-box-wrap">',
   });
   const login_end = get_line_number({ search_word: "    </main>" });
 
