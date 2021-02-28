@@ -2231,21 +2231,21 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-gas-entry-generator@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/gas-entry-generator/-/gas-entry-generator-2.0.1.tgz#5ac3e0e55fd77297978a5e8165bf45c119f631f2"
-  integrity sha512-JGsEPbOt0e65pMQ/gqPPhrQIsSjWZNH9O4xusYlIv2rKp53CDW6P40Ap5OrXezroyD6ZzizdHEKE0Kq4IfkZxg==
+gas-entry-generator@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gas-entry-generator/-/gas-entry-generator-2.1.0.tgz#f35557de34fcab15ca0201d639b2246e1cf4e9b7"
+  integrity sha512-IjbVuMjXlRP1zIJJGgSyOb5SjlVxnAdtLDp+aCdXNuZBg7OuD10WVtkJSCcf33VXcPe4AqWb8z+ucsXZMClsAA==
   dependencies:
     escodegen "2.0.0"
     esprima "4.0.1"
     estraverse "5.2.0"
 
-gas-webpack-plugin@^1.0.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gas-webpack-plugin/-/gas-webpack-plugin-1.2.0.tgz#c969786d1c4f80eff086e2a56b7d58bda74de49e"
-  integrity sha512-+PBPBCt0muxg2CFhNIkYpIj9FxlHlbpJ1ya5Bj98fqQ3uYie5DbzUTqVsv7IGDK9Gw7dWit3eL4tlEV5TZ50hQ==
+gas-webpack-plugin@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gas-webpack-plugin/-/gas-webpack-plugin-2.0.0.tgz#a6f066870ba90bad52c7441640e3fcc6682d8cba"
+  integrity sha512-Sto7WWbAUhka4VtFQ20/dczQgalRFnrGTp9D29QRwbj+wfevoZETSk7UBgsWe6OXrCn94nn8ORJ6D7ZBfo/Pqg==
   dependencies:
-    gas-entry-generator "2.0.1"
+    gas-entry-generator "2.1.0"
     minimatch "^3.0.4"
     webpack-sources "^1.4.3"
 
